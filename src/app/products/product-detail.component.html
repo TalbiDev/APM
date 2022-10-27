@@ -1,0 +1,47 @@
+<div class="card">
+  <div class="card-header">
+    {{ pageTitle }}
+  </div>
+
+  <div class="card-body">
+    <div class="row">
+      <div class="col">
+        <ul class="list-group mb-2" *ngIf="product">
+          <li class="list-group-item">
+            <strong>Name : </strong> {{ product.productName }}
+          </li>
+          <li class="list-group-item">
+            <strong>Code : </strong>
+            {{ product.productCode | lowercase | convertToSpaces: "-" }}
+          </li>
+          <li class="list-group-item">
+            <strong>release Date : </strong>{{ product.releaseDate | date }}
+          </li>
+          <li class="list-group-item">
+            <strong>price : </strong>
+            {{ product.price | currency: "USD":"symbol":"2.2-2" }}
+          </li>
+          <li class="list-group-item">
+            <strong>Rating : </strong>{{ product.starRating }}
+          </li>
+        </ul>
+      </div>
+      <div class="col">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <img [src]="product?.imageUrl" alt="" class="w-50" />
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+    <button
+      class="btn btn-outline-secondary"
+      (click)="onBack()"
+      style="width: 80px"
+    >
+      <i class="fa fa-chevron-left"></i>Back
+    </button>
+  </div>
+</div>

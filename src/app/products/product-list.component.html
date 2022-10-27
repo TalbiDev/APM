@@ -1,5 +1,5 @@
 <div class="card">
-  <div class="card-header">{{ pageTitle }}</div>
+  <div class="card-header">{{ pageTitle  }}</div>
   <div class="card-body">
     <div class="row">
       <div class="col-md-2">Filter by:</div>
@@ -39,13 +39,22 @@
                 [style.margin.px]="imageMargin"
               />
             </td>
-            <td>{{ product.productName }}</td>
+            <td>
+              <a [routerLink]="['/products', product.productId]">{{
+                product.productName
+              }}</a>
+            </td>
             <td>
               {{ product.productCode | lowercase | convertToSpaces: "-" }}
             </td>
             <td>{{ product.releaseDate }}</td>
             <td>{{ product.price | currency: "USD":"symbol":"2.2-2" }}</td>
-            <td><pm-star [rating]="product.starRating" (ratingClicked)="ratingClicked($event)"></pm-star></td>
+            <td>
+              <pm-star
+                [rating]="product.starRating"
+                (ratingClicked)="ratingClicked($event)"
+              ></pm-star>
+            </td>
           </tr>
         </tbody>
       </table>
